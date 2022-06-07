@@ -1,0 +1,20 @@
+.infoList ul li {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.infoList ul li span {
+  color: gray;
+  margin-left: 5px;
+}
+
+@media (max-width: 500px) {
+  .infoList ul li {
+    display: block;
+  }
+  .infoList ul {
+    padding: 0 15px;
+  }
+}

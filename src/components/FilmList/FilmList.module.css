@@ -16,6 +16,10 @@
   max-width: 350px;
   width: 100%;
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .find input {
   max-width: 400px;
@@ -30,4 +34,32 @@
   .find input {
     width: 80%;
   }
+}
+.pagination {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.page {
+  margin-left: 10px;
+  list-style: none;
+  color: black;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.active {
+  margin-left: 10px;
+  list-style: none;
+  color: white;
+  background-color: teal;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

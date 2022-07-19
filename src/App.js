@@ -1,66 +1,48 @@
 import "./App.css";
 import FilmList from "./components/FilmList/FilmList";
-import React from "react";
 import Header from "./components/Header/Header";
+import AboutFilm from "./components/AboutFilm/AboutFilm";
+import InfoFilm from "./components/InfoFilm/InfoFilm";
+import NotFound from "./components/NotFound/NotFound";
+
+import React from "react";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AboutFilm from "./components/AboutFilm/AboutFilm";
-
-import InfoFilm from "./components/InfoFilm/InfoFilm";
+import axios from "axios";
 
 function App() {
   const [filmes, setFilmes] = useState([]);
   const [title, setTitle] = useState("");
+  const [activePage, setActivePage] = useState(1);
+  const [totalResults, setTotalResults] = useState();
   const [loader, setLoader] = useState(false);
 
   // Movie Search
-
   let sortedFilms = filmes.filter((f) =>
     f.Title.toLowerCase().includes(title.toLowerCase())
   );
 
-  const getMovie = async (search) => {
-    const url = `http://www.omdbapi.com/?s=${search}&apikey=a2f0ac2e`;
-    const response = await fetch(url);
-    const responseJson = await response.json();
-
-    if (responseJson.Search) {
-      setFilmes(responseJson.Search);
-    }
-  };
   useEffect(() => {
-    getMovie(title);
-  }, [title]);
-
-  // Information about film
-
-  const [idFilm, setIdFilm] = useState("");
-  const [infoFilm, setInfoFilm] = useState([]);
-
-  const InfoMovie = async (id) => {
-    const url = `http://www.omdbapi.com/?i=${id}&apikey=a2f0ac2e`;
-    const response = await fetch(url);
-    const responseId = await response.json();
-
-    if (responseId.Response === "False") {
-      const movieInfo = JSON.parse(localStorage.getItem("infoFilm"));
-      if (movieInfo === null) {
-        return infoFilm;
-      }
-      setInfoFilm(movieInfo);
-    } else if (responseId) {
-      saveToLSinfoFilm([responseId]);
-      setInfoFilm(JSON.parse(localStorage.getItem("infoFilm")));
-    }
-  };
+    setLoader(true);
+    axios
+      .get(
+        `http://www.omdbapi.com/?s=${title}&page=${activePage}&apikey=a2f0ac2e`
+      )
+      .then((response) => {
+        response.data.Search ? setFilmes(response.data.Search) : setFilmes([]);
+        setTotalResults(response.data.totalResults);
+        setLoader(false);
+      });
+    window.scrollTo({
+      top: 50,
+      behavior: "smooth",
+    });
+  }, [title, activePage]);
 
   // Save to localstorage
 
   const saveToLocalStorageFavFilm = (item) => {
     localStorage.setItem("favourite", JSON.stringify(item));
-  };
-  const saveToLSinfoFilm = (item) => {
-    localStorage.setItem("infoFilm", JSON.stringify(item));
   };
 
   useEffect(() => {
@@ -69,14 +51,6 @@ function App() {
       ? setFavFilm(favFilm)
       : setFavFilm(movieFavourites);
   }, []);
-
-  useEffect(() => {
-    InfoMovie(idFilm);
-    setLoader(true);
-    setTimeout(() => {
-      setLoader(false);
-    }, 500);
-  }, [idFilm]);
 
   // Add to favourite movie
 
@@ -110,17 +84,21 @@ function App() {
             path="/"
             element={
               <FilmList
+                activePage={activePage}
+                setActivePage={setActivePage}
+                loader={loader}
+                setLoader={setLoader}
+                totalResults={totalResults}
                 setTitle={setTitle}
                 title={title}
                 films={filmes}
                 sortedFilms={sortedFilms}
+                favFilm={favFilm}
                 addFavFilm={addFavFilm}
-                idFilm={idFilm}
-                setIdFilm={setIdFilm}
-                saveToLSinfoFilm={saveToLSinfoFilm}
               />
             }
           />
+
           <Route
             path="/favourite"
             element={
@@ -129,23 +107,16 @@ function App() {
                   favFilm={favFilm}
                   setFavFilm={setFavFilm}
                   removeFavFilm={removeFavFilm}
-                  setIdFilm={setIdFilm}
                 />
               ) : (
-                <h1>Любимых фильмов нету!</h1>
+                <h1 style={{ textAlign: "center" }}>
+                  Любимых фильмов нету! &#128546;
+                </h1>
               )
             }
           />
-          <Route
-            path="/info"
-            element={
-              <InfoFilm
-                infoFilm={infoFilm}
-                setInfoFilm={setInfoFilm}
-                loader={loader}
-              />
-            }
-          />
+          <Route path={`/info/:id`} element={<InfoFilm />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>

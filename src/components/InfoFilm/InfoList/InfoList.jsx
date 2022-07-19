@@ -15,8 +15,17 @@ const InfoList = (props) => {
         <li>
           В главных ролях: <span>{props.infoFilm.Actors}</span>
         </li>
-        <li>Награды: {props.infoFilm.Awards}</li>
-        <li>Цифровой релиз: {props.infoFilm.DVD}</li>
+        {props.infoFilm.Awards === "N/A" ? (
+          ""
+        ) : (
+          <li>Награды: {props.infoFilm.Awards}</li>
+        )}
+
+        {props.infoFilm.DVD === "N/A" ? (
+          ""
+        ) : (
+          <li>Цифровой релиз: {props.infoFilm.DVD}</li>
+        )}
       </ul>
     </div>
   );

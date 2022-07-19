@@ -9,6 +9,7 @@ const AboutFilm = (props) => {
         {props.favFilm.map((f) => {
           return (
             <FavFilm
+              key={f.imdbID}
               favFilm={f}
               removeFavFilm={props.removeFavFilm}
               setIdFilm={props.setIdFilm}

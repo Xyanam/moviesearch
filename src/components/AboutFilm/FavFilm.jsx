@@ -17,11 +17,7 @@ const FavFilm = (props) => {
         >
           Удалить
         </button>
-        <NavLink
-          to="/info"
-          className={classes.info}
-          onClick={() => props.setIdFilm(props.favFilm.imdbID)}
-        >
+        <NavLink to={`/info/${props.favFilm.imdbID}`} className={classes.info}>
           Информация о фильме
         </NavLink>
       </div>

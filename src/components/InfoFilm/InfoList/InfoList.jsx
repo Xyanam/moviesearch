@@ -1,31 +1,23 @@
 import classes from "./InfoList.module.css";
 
-const InfoList = (props) => {
+const InfoList = ({ infoFilm }) => {
   return (
     <div className={classes.infoList}>
       <ul>
-        <li>Дата выхода: {props.infoFilm.Released}</li>
-        <li>Страна: {props.infoFilm.Country}</li>
-        <li>Жанр: {props.infoFilm.Genre}</li>
-        <li>Сценарист: {props.infoFilm.Writer}</li>
+        <li>Дата выхода: {infoFilm.Released}</li>
+        <li>Страна: {infoFilm.Country}</li>
+        <li>Жанр: {infoFilm.Genre}</li>
+        <li>Сценарист: {infoFilm.Writer}</li>
         <li>
-          Время: <span>{props.infoFilm.Runtime}</span>
+          Время: <span>{infoFilm.Runtime}</span>
         </li>
-        <li>Количество сезонов: {props.infoFilm.totalSeasons}</li>
+        <li>Количество сезонов: {infoFilm.totalSeasons}</li>
         <li>
-          В главных ролях: <span>{props.infoFilm.Actors}</span>
+          В главных ролях: <span>{infoFilm.Actors}</span>
         </li>
-        {props.infoFilm.Awards === "N/A" ? (
-          ""
-        ) : (
-          <li>Награды: {props.infoFilm.Awards}</li>
-        )}
+        {infoFilm.Awards === "N/A" ? "" : <li>Награды: {infoFilm.Awards}</li>}
 
-        {props.infoFilm.DVD === "N/A" ? (
-          ""
-        ) : (
-          <li>Цифровой релиз: {props.infoFilm.DVD}</li>
-        )}
+        {infoFilm.DVD === "N/A" ? "" : <li>Цифровой релиз: {infoFilm.DVD}</li>}
       </ul>
     </div>
   );

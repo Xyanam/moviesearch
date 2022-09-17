@@ -19,6 +19,17 @@ const FilmList = (props) => {
     []
   );
 
+  const nextPage = () => {
+    props.activePage >= totalPages
+      ? props.setActivePage(totalPages)
+      : props.setActivePage(props.activePage + 1);
+  };
+  const prevPage = () => {
+    props.activePage <= 1
+      ? props.setActivePage(1)
+      : props.setActivePage(props.activePage - 1);
+  };
+
   return (
     <div className={classes.filmList}>
       <div className={classes.find}>
@@ -58,6 +69,9 @@ const FilmList = (props) => {
       {props.sortedFilms ? (
         <div>
           <ul className={classes.pagination}>
+            <li className={classes.page} onClick={prevPage}>
+              «
+            </li>
             {pages.map((page) => (
               <li
                 key={page}
@@ -71,6 +85,9 @@ const FilmList = (props) => {
                 {page}
               </li>
             ))}
+            <li className={classes.page} onClick={nextPage}>
+              »
+            </li>
           </ul>
         </div>
       ) : (

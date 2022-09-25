@@ -1,4 +1,4 @@
-# Social App
+# MovieSearcher
 
 Веб-приложение для поиска фильмов на базе OmdbApi.
 

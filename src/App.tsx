@@ -6,7 +6,6 @@ import AboutFilm from "./components/AboutFilm/AboutFilm";
 import InfoFilm from "./components/InfoFilm/InfoFilm";
 import NotFound from "./components/NotFound/NotFound";
 
-import React from "react";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
@@ -88,8 +87,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header films={filmes} />
-
+        <Header />
         <Routes>
           <Route
             path="/"
@@ -98,13 +96,9 @@ function App() {
                 activePage={activePage}
                 setActivePage={setActivePage}
                 loader={loader}
-                setLoader={setLoader}
                 totalResults={totalResults}
                 setTitle={setTitle}
-                title={title}
-                films={filmes}
                 sortedFilms={sortedFilms}
-                favFilm={favFilm}
                 addFavFilm={addFavFilm}
               />
             }
@@ -114,11 +108,7 @@ function App() {
             path="/favourite"
             element={
               favFilm != null && favFilm.length > 0 ? (
-                <AboutFilm
-                  favFilm={favFilm}
-                  setFavFilm={setFavFilm}
-                  removeFavFilm={removeFavFilm}
-                />
+                <AboutFilm favFilm={favFilm} removeFavFilm={removeFavFilm} />
               ) : (
                 <h1 style={{ textAlign: "center" }}>
                   Любимых фильмов нету! &#128546;

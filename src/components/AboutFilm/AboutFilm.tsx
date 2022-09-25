@@ -1,7 +1,13 @@
+import { TFilmList } from "../FilmList/FilmList";
 import classes from "./AboutFilm.module.css";
 import FavFilm from "./FavFilm";
 
-const AboutFilm = (props) => {
+type TAboutFilmProps = {
+  favFilm: TFilmList[];
+  removeFavFilm: (film: TFilmList) => void;
+};
+
+const AboutFilm: React.FC<TAboutFilmProps> = (props) => {
   return (
     <div>
       <h2 className={classes.title}>Любимые фильмы</h2>
@@ -12,7 +18,6 @@ const AboutFilm = (props) => {
               key={f.imdbID}
               favFilm={f}
               removeFavFilm={props.removeFavFilm}
-              setIdFilm={props.setIdFilm}
             />
           );
         })}

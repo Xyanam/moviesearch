@@ -5,7 +5,7 @@ import { useState, useCallback } from "react";
 import Loader from "../Loader/Loader";
 import { createPages } from "../../utils/pagesCreator";
 
-type TFilmList = {
+export type TFilmList = {
   Poster: string;
   Title: string;
   Type: string;
@@ -19,14 +19,11 @@ type FilmListProps = {
   loader: boolean;
   totalResults?: string;
   setTitle: (event: string) => void;
-  title: string;
-  films: TFilmList[];
   sortedFilms: TFilmList[];
-  favFilm: TFilmList[];
-  addFavFilm: () => void;
+  addFavFilm: (film: TFilmList) => void;
 };
 
-const FilmList = (props: FilmListProps) => {
+const FilmList: React.FC<FilmListProps> = (props) => {
   const pages: number[] = [];
   const totalPages = Math.ceil(Number(props.totalResults) / 10);
 
@@ -79,12 +76,7 @@ const FilmList = (props: FilmListProps) => {
           <Loader />
         ) : (
           props.sortedFilms.map((film) => (
-            <Film
-              key={film.imdbID}
-              film={film}
-              favFilm={props.favFilm}
-              addFavFilm={props.addFavFilm}
-            />
+            <Film key={film.imdbID} film={film} addFavFilm={props.addFavFilm} />
           ))
         )}
       </div>

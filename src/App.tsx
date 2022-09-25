@@ -11,11 +11,19 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
 
+type TFilmList = {
+  Poster: string;
+  Title: string;
+  Type: string;
+  Year: string;
+  imdbID: string;
+};
+
 function App() {
-  const [filmes, setFilmes] = useState([]);
+  const [filmes, setFilmes] = useState<TFilmList[]>([]);
   const [title, setTitle] = useState("");
   const [activePage, setActivePage] = useState(1);
-  const [totalResults, setTotalResults] = useState();
+  const [totalResults, setTotalResults] = useState<string>();
   const [loader, setLoader] = useState(false);
 
   // Movie Search
@@ -42,12 +50,14 @@ function App() {
 
   // Save to localstorage
 
-  const saveToLocalStorageFavFilm = (item) => {
+  const saveToLocalStorageFavFilm = (item: TFilmList[]) => {
     localStorage.setItem("favourite", JSON.stringify(item));
   };
 
   useEffect(() => {
-    const movieFavourites = JSON.parse(localStorage.getItem("favourite"));
+    const movieFavourites = JSON.parse(
+      localStorage.getItem("favourite") as string
+    );
     movieFavourites === null
       ? setFavFilm(favFilm)
       : setFavFilm(movieFavourites);
@@ -55,9 +65,9 @@ function App() {
 
   // Add to favourite movie
 
-  const [favFilm, setFavFilm] = useState([]);
+  const [favFilm, setFavFilm] = useState<TFilmList[]>([]);
 
-  let addFavFilm = (film) => {
+  let addFavFilm = (film: TFilmList) => {
     if (favFilm.includes(film)) {
       return favFilm;
     } else {
@@ -69,7 +79,7 @@ function App() {
 
   // Remove from favourite
 
-  let removeFavFilm = (film) => {
+  let removeFavFilm = (film: TFilmList) => {
     const filteredFav = favFilm.filter((i) => i.Title !== film.Title);
     setFavFilm(filteredFav);
     saveToLocalStorageFavFilm(filteredFav);

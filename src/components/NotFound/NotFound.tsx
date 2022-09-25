@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./NotFound.module.css";
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <div className={classes.container}>
       <span className={classes.emoji}>&#128533;</span>

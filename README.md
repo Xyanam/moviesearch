@@ -1,4 +1,4 @@
-# MovieSearcher
+# Movie Searcher
 
 Веб-приложение для поиска фильмов на базе OmdbApi.
 

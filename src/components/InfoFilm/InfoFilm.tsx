@@ -5,11 +5,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
 
-type TRatings = {
-  Source: string;
-  Value: string;
-};
-
 export interface IResponseFilm {
   Actors: string;
   Awards: string;
@@ -24,7 +19,7 @@ export interface IResponseFilm {
   Poster: string;
   Production: string;
   Rated: string;
-  Ratings: TRatings[];
+  Ratings: { Source: string; Value: string }[];
   Released: string;
   Response: string;
   Runtime: string;

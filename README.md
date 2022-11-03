@@ -17,8 +17,8 @@ $ npm start
 ```
 
 ## Project Demo
-http://t99691kq.beget.tech/
+https://moviesearch-ten.vercel.app/
 
 ## Preview project
 
-![Screenshot_3](https://user-images.githubusercontent.com/102315914/192165261-6728e9b4-f92f-4991-a0dc-321a9a0028da.png)
+![Screenshot_7](https://user-images.githubusercontent.com/102315914/199797961-8e02685f-795a-46fe-8d9f-821277bd78b9.png)

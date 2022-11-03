@@ -6,9 +6,14 @@ import { TFilmList } from "./FilmList";
 type TFilmProps = {
   film: TFilmList;
   addFavFilm: (f: TFilmList) => void;
+  removeFavFilm: (f: TFilmList) => void;
 };
 
-const Film: React.FC<TFilmProps> = ({ film, addFavFilm }) => {
+const Film: React.FC<TFilmProps> = ({ film, addFavFilm, removeFavFilm }) => {
+  const movieFavourites = JSON.parse(
+    localStorage.getItem("favourite") as string
+  );
+
   return (
     <div className={classes.filmBlock}>
       <div className={classes.blockImg}>
@@ -27,10 +32,14 @@ const Film: React.FC<TFilmProps> = ({ film, addFavFilm }) => {
         <button
           className={classes.button}
           onClick={() => {
-            addFavFilm(film);
+            movieFavourites.find((f: TFilmList) => f.imdbID === film.imdbID)
+              ? removeFavFilm(film)
+              : addFavFilm(film);
           }}
         >
-          Добавить в любимые фильмы
+          {movieFavourites.find((f: TFilmList) => f.imdbID === film.imdbID)
+            ? "Удалить из любимых фильмов"
+            : "Добавить в любимые фильмы"}
         </button>
       </div>
       <NavLink to={`/info/${film.imdbID}`} className={classes.info}>

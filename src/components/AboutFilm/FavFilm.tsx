@@ -28,7 +28,7 @@ const FavFilm: React.FC<TFavFilmProps> = ({ favFilm, removeFavFilm }) => {
           className={classes.button}
           onClick={() => removeFavFilm(favFilm)}
         >
-          Добавить в любимые фильмы
+          Удалить из любимых фильмов
         </button>
       </div>
       <NavLink to={`/info/${favFilm.imdbID}`} className={classes.info}>

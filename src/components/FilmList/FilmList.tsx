@@ -21,6 +21,7 @@ type FilmListProps = {
   setTitle: (event: string) => void;
   sortedFilms: TFilmList[];
   addFavFilm: (film: TFilmList) => void;
+  removeFavFilm: (film: TFilmList) => void;
 };
 
 const FilmList: React.FC<FilmListProps> = (props) => {
@@ -78,7 +79,12 @@ const FilmList: React.FC<FilmListProps> = (props) => {
           <Loader />
         ) : (
           props.sortedFilms.map((film) => (
-            <Film key={film.imdbID} film={film} addFavFilm={props.addFavFilm} />
+            <Film
+              key={film.imdbID}
+              film={film}
+              addFavFilm={props.addFavFilm}
+              removeFavFilm={props.removeFavFilm}
+            />
           ))
         )}
       </div>

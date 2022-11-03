@@ -100,6 +100,7 @@ function App() {
                 setTitle={setTitle}
                 sortedFilms={sortedFilms}
                 addFavFilm={addFavFilm}
+                removeFavFilm={removeFavFilm}
               />
             }
           />

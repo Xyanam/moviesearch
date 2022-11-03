@@ -110,7 +110,7 @@ function App() {
               favFilm != null && favFilm.length > 0 ? (
                 <AboutFilm favFilm={favFilm} removeFavFilm={removeFavFilm} />
               ) : (
-                <h1 style={{ textAlign: "center" }}>
+                <h1 style={{ textAlign: "center", color: "white" }}>
                   Любимых фильмов нету! &#128546;
                 </h1>
               )

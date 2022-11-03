@@ -6,15 +6,15 @@
   flex-direction: column;
 }
 .btn {
-  color: black;
+  color: white;
   text-decoration: none;
-  border: 1px solid teal;
+  border: 1px solid #0c2738;
   border-radius: 5px;
   padding: 10px 20px;
   transition: 0.2s linear;
 }
 .btn:hover {
-  background-color: teal;
+  background-color: #0c2738;
   color: white;
   transition: 0.2s linear;
 }

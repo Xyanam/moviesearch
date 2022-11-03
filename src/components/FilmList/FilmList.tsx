@@ -64,7 +64,9 @@ const FilmList: React.FC<FilmListProps> = (props) => {
         />
         {props.sortedFilms.length ? (
           <div>
-            <h3>Всего найдено: {props.totalResults}</h3>
+            <h3 className={classes.totalFind}>
+              Всего найдено: {props.totalResults}
+            </h3>
           </div>
         ) : (
           ""

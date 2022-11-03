@@ -8,8 +8,5 @@
 }
 .title {
   text-align: center;
-}
-.notFound {
-  display: flex;
-  justify-content: center;
+  color: white;
 }

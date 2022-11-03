@@ -19,8 +19,10 @@ const Film: React.FC<TFilmProps> = ({ film, addFavFilm }) => {
         )}
       </div>
       <div className={classes.blockInfo}>
-        <h3>{film.Title}</h3>
-        <p>Год выпуска: {film.Year}</p>
+        <div className={classes.filmTitle}>
+          <h3>{film.Title}</h3>
+        </div>
+        <span>Год выпуска: {film.Year}</span>
         <p>Тип: {film.Type}</p>
         <button
           className={classes.button}

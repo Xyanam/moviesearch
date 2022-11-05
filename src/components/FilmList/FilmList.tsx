@@ -1,7 +1,8 @@
+import React from "react";
+import { useState, useCallback } from "react";
 import Film from "./Film";
 import classes from "./FilmList.module.css";
 import debounce from "lodash.debounce";
-import { useState, useCallback } from "react";
 import Loader from "../Loader/Loader";
 import { createPages } from "../../utils/pagesCreator";
 
@@ -24,7 +25,7 @@ type FilmListProps = {
   removeFavFilm: (film: TFilmList) => void;
 };
 
-const FilmList: React.FC<FilmListProps> = (props) => {
+const FilmList: React.FC<FilmListProps> = React.memo((props) => {
   const pages: number[] = [];
   const totalPages = Math.ceil(Number(props.totalResults) / 10);
 
@@ -117,5 +118,5 @@ const FilmList: React.FC<FilmListProps> = (props) => {
       )}
     </div>
   );
-};
+});
 export default FilmList;

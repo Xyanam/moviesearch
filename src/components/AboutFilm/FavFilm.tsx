@@ -38,6 +38,4 @@ const FavFilm: React.FC<TFavFilmProps> = ({ favFilm, removeFavFilm }) => {
   );
 };
 
-// onClick={() => props.removeFavFilm(props.favFilm)}
-
 export default FavFilm;

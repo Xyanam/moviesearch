@@ -9,6 +9,7 @@ import NotFound from "./components/NotFound/NotFound";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
+import View from "./components/View/View";
 
 type TFilmList = {
   Poster: string;
@@ -118,6 +119,7 @@ function App() {
             }
           />
           <Route path={`/info/:id`} element={<InfoFilm />} />
+          <Route path={`/view/:id`} element={<View />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

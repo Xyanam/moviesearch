@@ -3,6 +3,7 @@ import InfoList from "../InfoList/InfoList";
 import noPoster from "../../../img/noposter.png";
 import { IResponseFilm } from "../InfoFilm";
 import NotFoundFilm from "../NotFoundFilm/NotFoundFilm";
+import { Link } from "react-router-dom";
 
 type InfoProps = {
   infoFilm: IResponseFilm;
@@ -28,6 +29,13 @@ const Info: React.FC<InfoProps> = ({ infoFilm }) => {
                 Рейтинг IMDB: <span>{infoFilm.imdbRating}</span>
               </p>
             </div>
+            <Link
+              to={`/view/${infoFilm.imdbID}`}
+              style={{ textDecoration: "none" }}
+              className={classes.rating}
+            >
+              Смотреть
+            </Link>
           </div>
           <div className={classes.desc}>
             <div className={classes.title}>

@@ -32,12 +32,16 @@ const Film: React.FC<TFilmProps> = ({ film, addFavFilm, removeFavFilm }) => {
         <button
           className={classes.button}
           onClick={() => {
-            movieFavourites.find((f: TFilmList) => f.imdbID === film.imdbID)
+            movieFavourites === null
+              ? addFavFilm(film)
+              : movieFavourites.find((f: TFilmList) => f.imdbID === film.imdbID)
               ? removeFavFilm(film)
               : addFavFilm(film);
           }}
         >
-          {movieFavourites.find((f: TFilmList) => f.imdbID === film.imdbID)
+          {movieFavourites === null
+            ? "Добавить в любимые фильмы"
+            : movieFavourites.find((f: TFilmList) => f.imdbID === film.imdbID)
             ? "Удалить из любимых фильмов"
             : "Добавить в любимые фильмы"}
         </button>

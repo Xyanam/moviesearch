@@ -1,23 +1,16 @@
 import "./App.css";
 
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import axios from "axios";
+import View from "./components/View/View";
+import { TFilmList } from "./@types/TFilmList";
+
 import FilmList from "./components/FilmList/FilmList";
 import Header from "./components/Header/Header";
 import AboutFilm from "./components/AboutFilm/AboutFilm";
 import InfoFilm from "./components/InfoFilm/InfoFilm";
 import NotFound from "./components/NotFound/NotFound";
-
-import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import axios from "axios";
-import View from "./components/View/View";
-
-type TFilmList = {
-  Poster: string;
-  Title: string;
-  Type: string;
-  Year: string;
-  imdbID: string;
-};
 
 function App() {
   const [filmes, setFilmes] = useState<TFilmList[]>([]);
@@ -54,6 +47,7 @@ function App() {
     localStorage.setItem("favourite", JSON.stringify(item));
   };
 
+  const [favFilm, setFavFilm] = useState<TFilmList[]>([]);
   useEffect(() => {
     const movieFavourites = JSON.parse(
       localStorage.getItem("favourite") as string
@@ -64,8 +58,6 @@ function App() {
   }, []);
 
   // Add to favourite movie
-
-  const [favFilm, setFavFilm] = useState<TFilmList[]>([]);
 
   let addFavFilm = (film: TFilmList) => {
     if (favFilm.includes(film)) {

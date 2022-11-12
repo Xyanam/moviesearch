@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { TFilmList } from "../FilmList/FilmList";
+import { TFilmList } from "../../@types/TFilmList";
 import classes from "./AboutFilm.module.css";
 import FavFilm from "./FavFilm";
 

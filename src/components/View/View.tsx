@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IResponseFilm } from "../InfoFilm/InfoFilm";
+import { IResponseFilm } from "../../@types/IResponseFilm";
 import classes from "./View.module.css";
 
 const View = () => {
@@ -18,7 +18,7 @@ const View = () => {
     return () => {
       script.remove();
     };
-  }, []);
+  }, [id]);
   return (
     <div className={classes.container}>
       <h1 className={classes.title}>Смотреть {film?.Title}</h1>

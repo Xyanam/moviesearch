@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import classes from "./Film.module.css";
 import noPoster from "../../img/noposter.png";
-import { TFilmList } from "./FilmList";
+import { TFilmList } from "../../@types/TFilmList";
 
 type TFilmProps = {
   film: TFilmList;

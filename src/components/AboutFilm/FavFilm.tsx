@@ -1,7 +1,7 @@
 import classes from "./FavFilm.module.css";
 import { NavLink } from "react-router-dom";
-import { TFilmList } from "../FilmList/FilmList";
 import noPoster from "../../img/noposter.png";
+import { TFilmList } from "../../@types/TFilmList";
 
 type TFavFilmProps = {
   favFilm: TFilmList;

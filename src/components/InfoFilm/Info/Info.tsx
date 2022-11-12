@@ -1,9 +1,9 @@
 import classes from "./Info.module.css";
 import InfoList from "../InfoList/InfoList";
 import noPoster from "../../../img/noposter.png";
-import { IResponseFilm } from "../InfoFilm";
 import NotFoundFilm from "../NotFoundFilm/NotFoundFilm";
 import { Link } from "react-router-dom";
+import { IResponseFilm } from "../../../@types/IResponseFilm";
 
 type InfoProps = {
   infoFilm: IResponseFilm;

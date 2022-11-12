@@ -1,4 +1,4 @@
-import { IResponseFilm } from "../InfoFilm";
+import { IResponseFilm } from "../../../@types/IResponseFilm";
 import classes from "./InfoList.module.css";
 
 type InfoListProps = {

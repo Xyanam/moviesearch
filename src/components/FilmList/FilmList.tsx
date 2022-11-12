@@ -5,14 +5,7 @@ import classes from "./FilmList.module.css";
 import debounce from "lodash.debounce";
 import Loader from "../Loader/Loader";
 import { createPages } from "../../utils/pagesCreator";
-
-export type TFilmList = {
-  Poster: string;
-  Title: string;
-  Type: string;
-  Year: string;
-  imdbID: string;
-};
+import { TFilmList } from "../../@types/TFilmList";
 
 type FilmListProps = {
   activePage: number;

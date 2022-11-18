@@ -22,7 +22,6 @@
 ```
 $ npm install
 $ npm start
-
 ```
 
 ## Project Demo

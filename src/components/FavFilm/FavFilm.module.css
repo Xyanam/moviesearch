@@ -1,0 +1,77 @@
+.filmBlock {
+  max-width: 300px;
+  height: 600px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #373737;
+  color: white;
+  margin: 15px 15px;
+}
+.blockImg {
+  width: 250px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blockImg img {
+  width: 250px;
+  height: 300px;
+}
+.blockInfo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 10px;
+  max-width: 300px;
+  height: 200px;
+  width: 100%;
+  position: relative;
+}
+.filmTitle {
+  max-width: 100%;
+  width: 250px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  outline: none;
+  color: white;
+  font-size: 14px;
+  background-color: #0c2738;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 200px;
+  transition: 0.3s;
+  height: 40px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #133144;
+  transition: 0.3s;
+}
+.info {
+  text-decoration: none;
+  color: white;
+  border: 1px solid black;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 180px;
+  text-align: center;
+  background-color: #0c2738;
+  transition: 0.3s;
+}
+.info:hover {
+  background-color: #133144;
+  transition: 0.3s;
+}

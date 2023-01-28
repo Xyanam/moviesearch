@@ -1,13 +1,13 @@
 import { TFilmList } from "../../@types/TFilmList";
-import classes from "./AboutFilm.module.css";
-import FavFilm from "./FavFilm";
+import classes from "./FavFilmPage.module.css";
+import FavFilm from "../../components/FavFilm/FavFilm";
 
-type TAboutFilmProps = {
+type TFavFilmPageProps = {
   favFilm: TFilmList[];
   removeFavFilm: (film: TFilmList) => void;
 };
 
-const AboutFilm: React.FC<TAboutFilmProps> = (props) => {
+const FavFilmPage: React.FC<TFavFilmPageProps> = (props) => {
   return (
     <div>
       <h2 className={classes.title}>Любимые фильмы</h2>
@@ -26,4 +26,4 @@ const AboutFilm: React.FC<TAboutFilmProps> = (props) => {
   );
 };
 
-export default AboutFilm;
+export default FavFilmPage;

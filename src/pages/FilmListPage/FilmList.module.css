@@ -1,0 +1,44 @@
+.filmList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.find {
+  padding: 0 15px;
+  max-width: 350px;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.find input {
+  max-width: 400px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid black;
+  background-color: #0b2738;
+  border-radius: 10px;
+  padding: 0 10px;
+  outline: none;
+  color: white;
+  font-size: 18px;
+}
+.find input::placeholder {
+  color: rgb(165, 163, 163);
+}
+.totalFind {
+  color: white;
+}
+@media (max-width: 500px) {
+  .filmList {
+    margin: 0 auto;
+  }
+  .find input {
+    width: 80%;
+  }
+}

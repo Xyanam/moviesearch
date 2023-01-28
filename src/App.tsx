@@ -1,16 +1,14 @@
 import "./App.css";
-
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import View from "./components/View/View";
 import { TFilmList } from "./@types/TFilmList";
-
-import FilmList from "./components/FilmList/FilmList";
 import Header from "./components/Header/Header";
-import AboutFilm from "./components/AboutFilm/AboutFilm";
+import FavFilmPage from "./pages/FavFilmPage/FavFilmPage";
 import InfoFilm from "./components/InfoFilm/InfoFilm";
 import NotFound from "./components/NotFound/NotFound";
+import FilmListPage from "./pages/FilmListPage/FilmListPage";
 
 function App() {
   const [filmes, setFilmes] = useState<TFilmList[]>([]);
@@ -85,7 +83,7 @@ function App() {
           <Route
             path="/"
             element={
-              <FilmList
+              <FilmListPage
                 activePage={activePage}
                 setActivePage={setActivePage}
                 loader={loader}
@@ -102,7 +100,7 @@ function App() {
             path="/favourite"
             element={
               favFilm != null && favFilm.length > 0 ? (
-                <AboutFilm favFilm={favFilm} removeFavFilm={removeFavFilm} />
+                <FavFilmPage favFilm={favFilm} removeFavFilm={removeFavFilm} />
               ) : (
                 <h1 style={{ textAlign: "center", color: "white" }}>
                   Любимых фильмов нету! &#128546;

@@ -14,13 +14,21 @@ const Film: React.FC<TFilmProps> = ({ film, addFavFilm, removeFavFilm }) => {
     localStorage.getItem("favourite") as string
   );
 
+  const addFilmInFavourite = () => {
+    movieFavourites === null
+      ? addFavFilm(film)
+      : movieFavourites.find((f: TFilmList) => f.imdbID === film.imdbID)
+      ? removeFavFilm(film)
+      : addFavFilm(film);
+  };
+
   return (
     <div className={classes.filmBlock}>
       <div className={classes.blockImg}>
         {film.Poster === "N/A" ? (
-          <img src={noPoster} alt="" />
+          <img src={noPoster} alt="poster" />
         ) : (
-          <img src={film.Poster} alt="" />
+          <img src={film.Poster} alt="poster" />
         )}
       </div>
       <div className={classes.blockInfo}>
@@ -32,11 +40,7 @@ const Film: React.FC<TFilmProps> = ({ film, addFavFilm, removeFavFilm }) => {
         <button
           className={classes.button}
           onClick={() => {
-            movieFavourites === null
-              ? addFavFilm(film)
-              : movieFavourites.find((f: TFilmList) => f.imdbID === film.imdbID)
-              ? removeFavFilm(film)
-              : addFavFilm(film);
+            addFilmInFavourite();
           }}
         >
           {movieFavourites === null

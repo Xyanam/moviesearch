@@ -1,10 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IResponseFilm } from "../../@types/IResponseFilm";
 import classes from "./View.module.css";
 
-const View = () => {
+const View: FC = () => {
   const { id } = useParams();
   const [film, setFilm] = useState<IResponseFilm>();
   useEffect(() => {
